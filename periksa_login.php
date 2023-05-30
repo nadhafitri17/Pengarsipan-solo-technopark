@@ -20,15 +20,18 @@ if($cek > 0){
 	if($data['Level'] == "Administrator"){
 		$_SESSION['status'] = "administrator_logedin";
 		header("location:admin/");
-	}else if($data['Level'] == "Keuangan"){
+	}else if($data['Level'] == "keuangan"){
 		$_SESSION['status'] = "keuangan_logedin";
-		header("location:karyawan/");
+		header("location:keuangan/");
 	}else if($data['Level'] == "Verifikator"){
 		$_SESSION['status'] = "verifikator_logedin";
 		header("location:verifikator/");
+	}else if($data['Level'] == "manager"){
+		$_SESSION['status'] = "manager_logedin";
+		header("location:manager/");
 	}else{
-		header("location:login.php?alert=gagal");
+		header("location:index.php?alert=gagal");
 	}
 }else{
-	header("location:login.php?alert=gagal");
+	header("location:index.php?alert=gagal");
 }

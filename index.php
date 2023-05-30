@@ -23,7 +23,7 @@
 
     <div class="login-box">
       <center>
-        <h3><b>Solo Techno Park Analyzer (Soto Panaz)</b></h3>
+        <h3><b>Solo Techno Park Analyzer Pengarsipan</b></h3>
         <br />
         <?php
         if (isset($_GET['alert'])) {
