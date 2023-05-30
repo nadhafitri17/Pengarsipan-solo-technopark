@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 03:33 AM
+-- Generation Time: May 30, 2023 at 07:26 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,54 @@ SET time_zone = "+00:00";
 --
 -- Database: `keuanganstp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jabatan`
+--
+
+CREATE TABLE `jabatan` (
+  `Id_jabatan` int(11) NOT NULL,
+  `Nama_jabatan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `jabatan`
+--
+
+INSERT INTO `jabatan` (`Id_jabatan`, `Nama_jabatan`) VALUES
+(1, 'Kepala bagian umum'),
+(2, 'Koordinator lapangan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `karyawan`
+--
+
+CREATE TABLE `karyawan` (
+  `Id_karyawan` int(11) NOT NULL,
+  `No_induk_karyawan` int(11) DEFAULT NULL,
+  `Nama` varchar(255) DEFAULT NULL,
+  `Tgl_lahir` date DEFAULT NULL,
+  `Foto` varchar(255) DEFAULT NULL,
+  `Id_jabatan` int(11) DEFAULT NULL,
+  `Id_unit_kerja` int(11) DEFAULT NULL,
+  `Id_riwayat_pendidikan` int(11) DEFAULT NULL,
+  `Id_riwayat_jabatan` int(11) DEFAULT NULL,
+  `Id_riwayat_pelatihan` int(11) DEFAULT NULL,
+  `Id_riwayat_hukuman` int(11) DEFAULT NULL,
+  `Id_keluarga` int(11) DEFAULT NULL,
+  `Id_riwayat_cuti` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `karyawan`
+--
+
+INSERT INTO `karyawan` (`Id_karyawan`, `No_induk_karyawan`, `Nama`, `Tgl_lahir`, `Foto`, `Id_jabatan`, `Id_unit_kerja`, `Id_riwayat_pendidikan`, `Id_riwayat_jabatan`, `Id_riwayat_pelatihan`, `Id_riwayat_hukuman`, `Id_keluarga`, `Id_riwayat_cuti`) VALUES
+(1, 92738933, 'Respati', '1997-01-01', NULL, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -569,6 +617,25 @@ INSERT INTO `master_belanja` (`Id_jenisbelanja`, `Jenis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `master_cuti`
+--
+
+CREATE TABLE `master_cuti` (
+  `Id_cuti` int(11) NOT NULL,
+  `Jenis_cuti` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `master_cuti`
+--
+
+INSERT INTO `master_cuti` (`Id_cuti`, `Jenis_cuti`) VALUES
+(1, 'Nikah'),
+(2, 'Melahirkan');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `master_divisi`
 --
 
@@ -929,7 +996,40 @@ INSERT INTO `master_penerimaan` (`Id_penerimaan`, `Kode_penerimaan`, `Bulan`, `T
 (731, '', 'Mei', '2023-05-15', 'Deyya Fajar Putra Fernando', 'Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023', 'SMKN 5 Surakarta', 'KM-23/05/30', 50000, 1, '1114434236_KM-23.05.30_Deyya Fajar Putra Fernando.pdf', 'voice', 'https://drive.google.com/open?id=1CcQ-YwRSgVxoXd_2OZQbkeJ8bBt7X_FE', 'nonverifikasi'),
 (732, '', 'Mei', '2023-05-15', 'Aunurrofiq Ilham Nofandreas', 'Cicilan Pembayaran Diklat Mandiri Desain Manufaktur', 'SMK Penda 3 Jatipuro Karanganyar', 'KM-23/05/31', 4000000, 1, '642024370_KM-23.05.31_Aunurrofiq Ilham Nofandreas.pdf', 'voice', 'https://drive.google.com/open?id=1mZiQb_1cGJkytfU2SWOpaIrXHQjgamLN', 'nonverifikasi'),
 (733, '', 'Mei', '2023-05-17', 'Randy Arya Yudhatama', 'Cicilan Pembayaran Diklat Mandiri Pengelasan (Welding)', 'SMK Tunas Bangsa Tawangsari Sukoharjo', 'KM-23/05/32', 3900000, 1, '732064_KM-23.05.32_Randy Arya Yudhatama.pdf', 'voice', 'https://drive.google.com/open?id=16VCFmXtwXOlhvzBkpFgL5fiFlMniP4o8', 'nonverifikasi'),
-(734, '', 'Mei', '2023-05-17', 'Muhammad Adin Wijaya', ' Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023 ', 'SMK N 5 Surakarta', 'KM-23/05/33', 50000, 1, '935239857_KM-23.05.33_Muhammad Adin Wijaya.pdf', 'voice', 'https://drive.google.com/open?id=1Tqw1bVm-lPCb_vvgkpulPvuI7oYPRyEr', 'nonverifikasi');
+(734, '', 'Mei', '2023-05-17', 'Muhammad Adin Wijaya', ' Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023 ', 'SMK N 5 Surakarta', 'KM-23/05/33', 50000, 1, '935239857_KM-23.05.33_Muhammad Adin Wijaya.pdf', 'voice', 'https://drive.google.com/open?id=1Tqw1bVm-lPCb_vvgkpulPvuI7oYPRyEr', 'nonverifikasi'),
+(736, '', 'Mei', '2023-05-17', 'Rizqi Dwi Saputra', ' Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023 ', 'SMA N 7 Surakarta', 'KM-23/05/34', 50000, 1, '1791896966_KM-23.05.34_Rizqi Dwi Saputra - stp keu.pdf', 'voice', 'https://drive.google.com/open?id=1Nu5vudfBlnVMZqPDq13sWtunUiF2lud1', 'nonverifikasi'),
+(737, '', 'Mei', '2023-05-19', 'Aradhitya Bintang A.S', 'Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023', 'SMK N 2 SURAKARTA ', 'KM-23/05/49', 50000, 1, '148139754_KM-23.05.49_Aradhitya Bintang A.S.pdf', 'voice', 'https://drive.google.com/open?id=1C2satdGGlr3FKgn_-8XPqTpSGh2_NcbJ', 'nonverifikasi'),
+(738, '', 'Mei', '2023-05-19', 'Aditya Tama Arviansyah', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK Kristen 2 SURAKARTA ', 'KM-23/05/42', 50000, 1, '155142304_KM-23.05.42_Aditya Tama Arviansyah.pdf', 'voice', 'https://drive.google.com/open?id=1uc5BSojIkcuy5YqcdKwBQLfWasWEyROk', 'nonverifikasi'),
+(739, '', 'Mei', '2023-05-17', 'Baptista Chrisna Wahyu D P', ' Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023 ', 'SMK N 2 Surakarta', 'KM-23/05/35', 50000, 1, '375403634_KM-23.05.35_Baptista Chrisna Wahyu D.P.pdf', 'voice', 'https://drive.google.com/open?id=1XLSAkwNn9HEu8_DoZNVCPfQUZHO4m7w_', 'nonverifikasi'),
+(740, '', 'Maret', '2023-05-19', 'Herlambang Krisna Aji', 'Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023', 'SMK 2 Kristen Surakarta', 'KM-23/05/47', 50000, 1, '2001837662_KM-23.05.47_Herlambang Krisna Aji.pdf', 'voice', 'https://drive.google.com/open?id=11k9ukBRIaMCZ7ZmGnf8gieA399UX07W8', 'nonverifikasi'),
+(741, '', 'Mei', '2023-05-19', 'Bp Supri', 'Pembayaran Ball Stainless 63,35 40 Pcs @Rp 20.000', 'Bengkel Mulia Teknik', 'KM-23/05/36', 800000, 1, '1293845934_KM-23.05.36_Bp. Supri.pdf', 'voice', 'https://drive.google.com/open?id=1r1MtBwxl3paBJRMyfRy2WUA-iUeIMR-B', 'nonverifikasi'),
+(742, '', 'Mei', '2023-05-19', 'Surya Saputra', ' Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023 ', 'SMK N 2 Surakarta', 'KM-23/05/37', 50000, 1, '2035424835_KM-23.05.37_Surya Saputra.pdf', 'voice', 'https://drive.google.com/open?id=1VdvPeiY7n6utnE4MddBdZCbpMhZ5XHXB', 'nonverifikasi'),
+(743, '', 'Mei', '2023-05-19', 'Manunggal Tri Raharjo', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK MUH 1 SURAKARTA ', 'KM-23/05/43', 50000, 1, '1745531455_KM-23.05.43_Manunggal Tri Raharjo.pdf', 'voice', 'https://drive.google.com/open?id=1D_AlWkCdDnHHvparxY8QRGAjEm6NX4LL', 'nonverifikasi'),
+(744, '', 'Mei', '2023-05-22', 'Lauren Putra Laksono', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK Grafika Surakarta', 'KM-23/05/53', 50000, 1, '1408852413_KM-23.05.53_LAUREN PUTRA LAKSONO.pdf', 'voice', 'https://drive.google.com/open?id=1AkWlMwGMebsLyaT48Pw0-sxTWVFXAr84', 'nonverifikasi');
+INSERT INTO `master_penerimaan` (`Id_penerimaan`, `Kode_penerimaan`, `Bulan`, `Tanggal`, `Nama_pembayar`, `Keperluan`, `Alamat_instansi`, `No_tandaterima`, `Besaran_biaya`, `Id_metode`, `Bukti`, `Status`, `Drive`, `Keterangan`) VALUES
+(745, '', 'Mei', '2023-05-19', 'Muhammad Reno Ardiansyah', ' Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023 ', 'SMK N 5 Surakarta', 'KM-23/05/38', 50000, 1, '503069489_KM-23.05.38_Muhammad Reno Ardiansyah.pdf', 'voice', 'https://drive.google.com/open?id=1IwdSIGkIBpWRBlLcl8KOpq0g58tOi79u', 'nonverifikasi'),
+(746, '', 'Mei', '2023-05-22', 'Hendranata Candra Setyawan', 'Cicilan pembayaran diklat mandiri pengelasan (welding) + biaya pendaftaran', 'SMK Pembnas Sukoharjo', 'KM-23/05/54', 4000000, 1, '909491881_KM-23. 05.54_HENDRANATA CANDRA.pdf', 'voice', 'https://drive.google.com/open?id=124lqqiK-_ayly9J4o7eD_TEhoyCbmo8o', 'nonverifikasi'),
+(747, '', 'Mei', '2023-05-19', 'Resa Ananda Nata', ' Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023 ', 'SMK N 5 Surakarta', 'KM-23/05/39', 50000, 1, '1204104556_KM-23.05.39_Resa Ananda Nata.pdf', 'voice', 'https://drive.google.com/open?id=14CZdxMkr0dgi_Xa9VHmhPLnW1F51345t', 'nonverifikasi'),
+(748, '', 'Mei', '2023-05-22', 'Bapak Suyadi', 'Pembayaran Nozzle 12 pcs @25.000', 'SMAN 1 Gondangrejo Karanganyar', 'KM-23/05/55', 300000, 1, '460863723_KM-23.05.55_Bapak Suyadi.pdf', 'voice', 'https://drive.google.com/open?id=16o9McfFBuoXZ6FCtADh5i-aPUrsE422v', 'nonverifikasi'),
+(749, '', 'Maret', '2023-05-23', 'Bagusta Putra Pamungkas ', 'Pelunasan Pelatihan LAS SMAW 5-6 G', 'SMK N 2 SURAKARTA ', 'KM-23/05-56', 3400000, 1, '1573914487_KM-23.05.56_Bagusta Putra Pamungkas.pdf', 'voice', 'https://drive.google.com/open?id=1E6F92iPLtr3HdIoi3Pe-p9QFPIlWj9Q5', 'nonverifikasi'),
+(751, '', 'Mei', '2023-05-19', 'Mikael Lavio Chrisnandus', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK N 2 Surakarta', 'KM-23/05/44', 50000, 1, '1991880927_KM-23.05.44_Mikael Lavio Chrisnandus.pdf', 'voice', 'https://drive.google.com/open?id=17uRKO83E2pv_aqV3ZNkOkC8Rkz83W69t', 'nonverifikasi'),
+(752, '', 'Mei', '2023-05-23', 'Bagusta Putra Pamungkas ', 'Biaya Pendaftaran Pelatihan LAS SMAW 5-6 G', 'SMK N 2 SURAKARTA ', 'KM-23/05/57', 50000, 1, '264067812_KM-23.05.57_Bagusta Putra Pamungkas.pdf', 'voice', 'https://drive.google.com/open?id=1Q7n0YoCtzDxCfngKRRc0oMkutzQ2HMrI', 'nonverifikasi'),
+(753, '', 'Mei', '2023-05-23', 'Razan Afaf Fauzan Fatin ', 'Pelunasan Pembayaran Diklat Welding SMAW 6 G + Biaya Pendaftaran ', 'SMK Bhinneka Karya Simo ', 'KM-23/05/58', 3450000, 1, '1626668806_KM-23.05.58_Razan Afaf Fauzan Fatin.pdf', 'voice', 'https://drive.google.com/open?id=1MKH-kA1INi3N6v2xpcqbZHmWQ56TTM3_', 'nonverifikasi'),
+(754, '', 'Mei', '2023-05-19', 'Wahyu Rafi Raharjo', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK Kristen 2 Surakarta', 'KM-23/05/51', 50000, 1, '941660765_KM-23.05.51_Wahyu Rafi Raharjo.pdf', 'voice', 'https://drive.google.com/open?id=17uRKO83E2pv_aqV3ZNkOkC8Rkz83W69t', 'nonverifikasi'),
+(755, '', 'Mei', '2023-05-23', 'Diki Setyawan ', 'Pelunasan Pembayaran Diklat Welding SMAW 6 G + Biaya Pendaftaran ', 'SMK Muhammadiyah 6 Simo', 'KM-23/05/59', 3450000, 1, '1042555360_KM-23.05.59_Diki Setyawan.pdf', 'voice', 'https://drive.google.com/open?id=1CRqCQSC3lQ4Aod5pHS9lVE9vzyPeT_hR', 'nonverifikasi'),
+(756, '', 'Mei', '2023-05-19', 'Roy Surya Pradana', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK N 5 Surakarta', 'KM-23/05/52', 50000, 1, '522445224_KM-23.05.52_Roy Surya Pradana.pdf', 'voice', 'https://drive.google.com/open?id=1UnDWZqJfXqxRgCrUy3-x0CoYy95DO3mm', 'nonverifikasi'),
+(757, '', 'Mei', '2023-05-24', 'Fevyana Veronica Wijaya ', 'Pembayaran Prakerin', 'Politeknik Pratama Mulia Surakarta', 'KM-23/05/60', 40000, 1, '999150913_KM-23.05.60_Fevyana Veronica Wijaya - Fevyana.pdf', 'voice', 'https://drive.google.com/open?id=16wBaMvYB-eiFKH_1zH1uKhfq2sGukWpx', 'nonverifikasi'),
+(758, '', 'Mei', '2023-05-19', 'L Dwi Dharta Tegar S', ' Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023 ', 'ATW Surakarta', 'KM-23/05/41', 50000, 1, '1589804223_KM-23.05.41_L. Dwi Dharta Tegar S.pdf', 'voice', 'https://drive.google.com/open?id=1Ga-u1aEFgLOqTT6SNbF4VEJJruPqBtck', 'nonverifikasi'),
+(759, '', 'Mei', '2023-05-24', 'Prasetyawan', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK N 8 Surakarta', 'KM-23/05/61', 50000, 1, '990810539_KM-23.05.61_Prasetyawan.pdf', 'voice', 'https://drive.google.com/open?id=10l5BigUacr9OI4dUqqHwFntiB3Qj_jCc', 'nonverifikasi'),
+(760, '', 'Mei', '2023-05-19', 'Ridwan Alfi Hamdani', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK N 6 Surakarta', 'KM-23/05/45', 50000, 1, '1022555760_KM-23.05.45_Ridwan Alfi Hamdani.pdf', 'voice', 'https://drive.google.com/open?id=1zQ8WIuKa0-eyuviCR73g3GL9cyuoQevY', 'nonverifikasi'),
+(761, '', 'Mei', '2023-05-19', 'Muhammad Kiran Arindra Putra', ' Biaya Pendaftaran Diklat Desain Manufaktur Program APBD 2023 ', 'SMK N 9 Surakarta', 'KM-23/05/46', 50000, 1, '93152584_KM-23.05.46_Muhammad Kiran Arindra Putra.pdf', 'voice', 'https://drive.google.com/open?id=15qZHIqUo1UzdYlXxn7obyUYnR8BxJ51P', 'nonverifikasi'),
+(762, '', 'Mei', '2023-05-19', 'Atila Farrel Rainanda', 'Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023', 'SMK N 5 Surakarta', 'KM-23/05/48', 50000, 1, '583896751_KM-23.05.48_Atilla Farrel Rainananda.pdf', 'voice', 'https://drive.google.com/open?id=1JUkdS-RBVpUt7i4XJlHjKcjeX34ByE8X', 'nonverifikasi'),
+(763, '', 'Mei', '2023-05-19', 'Bagus Irfansyah', ' Biaya Pendaftaran Diklat Mekanik Manufaktur Program APBD 2023 ', 'UNS', 'KM-23/05/40', 50000, 1, '433324587_KM-23.05.40_Bagus Irfansyah.pdf', 'voice', 'https://drive.google.com/open?id=1CGNNig3Qmw5wPM0rt5wTL-GvU7ExFo3e', 'nonverifikasi'),
+(764, '', 'Mei', '2023-05-25', 'Muhammad Zaid Abdullah ', 'Cicilan Pembayaran Diklat Mandiri Mekanik Manufaktur + Biaya Pendaftaran ', 'SMK MUH 1 KLATEN', 'KM-23.05.63', 3950000, 1, '525670156_KM-23.05.63_Muhammad Zaid Abdullah - Erna Safitri.pdf', 'voice', 'https://drive.google.com/open?id=1lxIGmPII0V7-aQmJU2D1_3g7O72sbVD_', 'nonverifikasi'),
+(765, '', 'Mei', '2023-05-26', 'Bapak Karmanto', 'Pembayaran pisau cutting 1 DPA 2pcs @300.000', 'PT Aneka Teknik Sentosa', 'KM-23/05/64', 600000, 1, '2009638313_KM-23.05.64_Bapak Karmanto.pdf', 'voice', 'https://drive.google.com/open?id=1Jjr1eCZO3oOTgasxPgmZnktZbVu-AOBk', 'nonverifikasi'),
+(766, '', 'Mei', '2023-05-29', 'Bapak Nanang', 'Pembayaran Penjualan Chip/Gram 114 Kg @4000', 'Surakarta', 'KK-23/05/66', 456000, 1, '166247973_KM-23.05.66_Bapak Nanang.pdf', 'voice', 'https://drive.google.com/open?id=14YNIUqK_huuOWaUFDDuGCM2BRC1koBX-', 'nonverifikasi'),
+(767, '', 'Mei', '2023-05-29', 'Rizal Adi Hidayat', 'Pelunasan Pembayaran Diklat Mandiri Pengelasan (Welding)', 'SMK DIAN KIRANA 1 SURAKARTA', 'KM-23/05/70', 3850000, 1, '1602092316_KM-23.05.70_Rizal Adi Hidayat - Febbi Nur Fadillah.pdf', 'voice', 'https://drive.google.com/open?id=1wfB7u2BmW-57q0fDZMe3_y2eNWVM4MtO', 'nonverifikasi'),
+(768, '', 'Mei', '2023-05-29', 'Muhammad Farchan Aji Saputra', 'Cicilan Pembayaran Diklat Mandiri Pengelasan dan Biaya Pendaftaran', 'SMK DR SUTOMO', 'KM-23/05/69', 3950000, 1, '1596088869_KM-23.05.69_Muhammad Farchan Aji Saputra - Febbi Nur Fadillah.pdf', 'voice', 'https://drive.google.com/open?id=1EkQ3ANAx2bs8pjFrNXwEPfPUJVaVZVZk', 'nonverifikasi');
 
 -- --------------------------------------------------------
 
@@ -1118,7 +1218,54 @@ INSERT INTO `master_pengeluaran` (`Id_pengeluaran`, `Kode_pengeluaran`, `Id_sumb
 (190, '23-KK.05.003', 2, 8, 2, '2023-05-04', 'Mei', 'Biaya Promosi/Penjualan. (Persiapan pameran IBT)', 556500, '1268036821_23-KK.05.003.pdf', 'https://drive.google.com/open?id=1tTEHfv5KFG8iZHol3z9a6lYxFaBH0Gvz', 'nonverifikasi'),
 (191, '23-KK.05.005', 2, 2, 2, '2023-05-04', 'Mei', 'Biaya makan & minuman rapat; Biaya Pemeliharaan Inventaris Produksi; Biaya Pemeliharaan Inventaris kantor; Biaya transportasi lokal kantor; Biaya keperluan Rumah Tangga Kantor; Biaya pemeliharaan gedung. (Konsumsi Pengarahan ,dll)', 5900500, '1705821461_23-KK.05.005.pdf', 'https://drive.google.com/open?id=1aOJTDu-RUFbaKWAVwmVUVteTiQ6jytUp', 'nonverifikasi'),
 (192, '23-KK.02.029', 2, 2, 2, '2023-02-20', 'Februari', 'Biaya Makanan & Minuman Rapat (Konsumsi Rapat - Div. Umum)', 323000, '604386762_23-KK.02.029.pdf', 'https://drive.google.com/open?id=1nE5s4Z7aC5hdvusJQf_-3NxzePjNAVc7', 'verifikasi'),
-(193, '', 2, 2, 2, '2023-01-13', 'Januari', 'Biaya pendidikan karyawan; Biaya alat tulis dan perlengkapan kantor. (psikotest, ATK Kantor)', 1667000, '383794920_23-KK.01.005A.pdf', 'https://drive.google.com/open?id=1LGJhs-LZ_P0SkDalfzxPtZowJwX9EMru', 'verifikasi');
+(193, '', 2, 2, 2, '2023-01-13', 'Januari', 'Biaya pendidikan karyawan; Biaya alat tulis dan perlengkapan kantor. (psikotest, ATK Kantor)', 1667000, '383794920_23-KK.01.005A.pdf', 'https://drive.google.com/open?id=1LGJhs-LZ_P0SkDalfzxPtZowJwX9EMru', 'verifikasi'),
+(194, '23-KK.05.006', 2, 2, 2, '2023-05-05', 'Mei', 'Biaya Transportasi Lokal Kantor; Biaya FC & Barang Cetakan/Penggandaan Diklat; Biaya Pemeliharaan Inventaris Kantor; Biaya Keperluan Rumah Tangga Kantor. (Sewa mesin FC. transport)', 810000, '1483106919_23-KK.05.006.pdf', 'https://drive.google.com/open?id=1W9URcylE35rMaD9OTart5B6GcQHS7TkC', 'nonverifikasi'),
+(195, '23-KK.05.007', 2, 7, 2, '2023-05-08', 'Mei', 'Biaya Obat-obatan Produksi; Biaya Transport Lokal Produksi; Biaya ATK Produksi; Biaya supplies produksi; Biaya supplies produksi; Biaya Transport Lokal Produksi; Biaya Pemakaian Bahan Produksi; Biaya Supllies produksi.(P3K Prod,dll)', 2683700, '15702072_23-KK.05.007.pdf', 'https://drive.google.com/open?id=1kL3XoyLmqXeY9HwgISzs0Mo9z-JceWj7', 'nonverifikasi'),
+(196, 'Cek no. AH00861935', 2, 8, 2, '2023-05-10', 'Mei', 'Biaya Promosi/Penjualan; Biaya Iklan & Promosi Inkubator; Kas Besar.(Hosting,pemeran)', 30098775, '2052985793_Cek no. AH00861935.pdf', 'https://drive.google.com/open?id=1eC8UU_uA-BYQYFqOwUbQmWiZcJ4xQtIe', 'nonverifikasi'),
+(197, '23-KK.05.011', 2, 2, 2, '2023-05-12', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Transportasi Lokal Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, ', 4406600, '729764124_23-KK.05.011.pdf', 'https://drive.google.com/open?id=1jPDNmQSthuxIB6EIsA0oSvRveFORlSH_', 'nonverifikasi'),
+(198, '23-KK.05.012', 2, 2, 2, '2023-05-12', 'Mei', 'Biaya Pemeliharaan Inventaris Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Pemeliharaan Inventaris Kantor, Biaya Transportasi Lokal Kantor, Biaya Pemeliharaan Inventaris Kantor, Biaya Transportasi Lokal Kator (BBM msn pot rumput,dll)', 1085000, '790792529_23-KK.05.012.pdf', 'https://drive.google.com/open?id=1vfzd6Otzzq2bh4FKhZW0loNhKxhe4NuW', 'nonverifikasi'),
+(199, '23-KK-05.010', 2, 8, 2, '2023-05-12', 'Mei', 'Biaya ATK Inkubator, Biaya Transport Lokal Inkubator, Biaya ATK Inkubator, Biaya ATK Inkubator, Biaya ATK Inkubator, Biaya Keperluan Rumah Tangga Kantor, Biaya ATK Inkubator (kebutuhan pameran FEKDi) ', 801200, '673514879_23-KK-05.010.pdf', 'https://drive.google.com/open?id=1ZvAEWNbS4CYnkK9KjVZcSrjmzk2Q8UAe', 'nonverifikasi'),
+(200, '23-KK-05.008', 2, 6, 2, '2023-05-11', 'Mei', 'Biaya Benda Pos, Materai&Paket Diklat, Biaya Transport Lokal Diklat (kirim dokumen tagihan, uang transport) ', 224000, '1448181393_23-KK-05.008.pdf', 'https://drive.google.com/open?id=1jmslM6ObY3e00-hn03NT_3GQMeyTsKfo', 'nonverifikasi'),
+(201, '23-KK/05/20', 2, 7, 2, '2023-05-16', 'Mei', 'Biaya Supplies Produksi, Biaya ATK Produksi, Biaya Supplies Produksi, Biaya Bahan Bakar, Pelumas, Bahan Kimia (Tools, dll - Div. produksi) ', 1463900, '1981687774_23-KK.05.020 - Fina Oktafiani.pdf', 'https://drive.google.com/open?id=1x9lvOKZCBvjUM-UAvSX6MW0DxAh-eTGH', 'nonverifikasi'),
+(202, '23-KK.05.013', 2, 6, 2, '2023-05-12', 'Mei', 'Biaya ATK Diklat, Biaya ATK Diklat (plastik bgr, print)', 120000, '56185282_23-KK.05.013.pdf', 'https://drive.google.com/open?id=1e01fpH3kYZiV3-p-YULDpROASMEx4tIp', 'nonverifikasi'),
+(203, '23-KK.05.14', 2, 8, 2, '2023-05-12', 'Mei', 'Biaya FC dan Barang Cetakan/Penggandaan Inkubator', 146000, '427469462_23-KK.05.14.pdf', 'https://drive.google.com/open?id=1EmOdFvS7_XyNAbBa-Z-Dxexk73hwiIpz', 'nonverifikasi'),
+(204, '23-KK-05.009', 2, 7, 2, '2023-05-11', 'Mei', 'Biaya transport lokal produksi (solat genset- Div. Produksi', 600000, '1849449434_23-KK-05.009.pdf', 'https://drive.google.com/open?id=1mQcud5D5sbkbuzl2DiVgE8nA1VLyLcih', 'nonverifikasi'),
+(205, '23-KK/05/19', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya transportasi lokal kantor, biaya pemeliharaan gedung, biaya pemeliharaan gedung, biaya pemeliharaan &reparasi inventaris, biaya keperluan rumah tangga kantor. (BBM kendaraan umum, dll div. Umum) ', 986000, '384095683_23-KK-05.019 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1YgDxZZ9hhfexZ7Da38jKIcYztyhTpwdI', 'nonverifikasi'),
+(206, '23-KK/05/21', 2, 6, 2, '2023-05-16', 'Mei', 'Biaya transportasi lokal diklat, biaya obat-obatan diklat, biaya supplies diklat, biaya supplies diklat, biaya supplies diklat, biaya supplies diklat, biaya supplies diklat, biaya ATK diklat. (P3K diklat, dll div. Diklat) ', 986800, '1379284904_23-KK-05.021 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1Uw0zFpaF1dSXdqvKQnYc-OarpRxOevFA', 'nonverifikasi'),
+(207, '23-KK.05.015', 2, 7, 2, '2023-05-12', 'Mei', 'Biaya Supplies Produksi, Biaya Supplies Produksi, Biaya ATK Produksi, Biaya Transport Lokal Produksi, Biaya Supplies Produksi, Biaya Obat-obatan Produksi (kain aval, dll).', 1197000, '219055951_23-KK.05.015.pdf', 'https://drive.google.com/open?id=1dVz_AER6cLNULAL52fcWeZtqQM5GMKwT', 'nonverifikasi'),
+(208, '23-KK.05.017', 2, 6, 2, '2023-05-16', 'Mei', 'Biaya Bahan Diklat Las dalam Air, Biaya Bahan Diklat Las dalam Air, Biaya Transport Lokal Diklat, Biaya Bahan Diklat Las dalam Air, Biaya ATK Diklat (Honor Instruktur, dll - Div Diklat) ', 1676700, '229700143_23-KK.05.017.pdf', 'https://drive.google.com/open?id=1xN2i-mf9DwxD0zYYhNuw2SNvNc6o37Yd', 'nonverifikasi'),
+(209, '23-KK/05/24', 2, 7, 2, '2023-05-19', 'Mei', 'Biaya transport lokal dan produksi, biaya obat-obatan produksi, biaya transport lokal produksi, biaya ATK produksi, biaya transport lokal produksi. (BBM L300 prod. Div. Produksi) ', 407000, '532372461_23-KK-05.024 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1TgdcAM5UtDP8hOOMbphoGLiOuBTPcgij', 'nonverifikasi'),
+(210, '23-KK-05.016', 2, 2, 2, '2023-05-16', 'Mei', 'Biaya keperluan rumah tangga kantor, biaya keperluan rumah tangga kantor, biaya BPJS ketenagakerjaan, biaya pemeliharaan inventaris kantor. (Pengeluaran, BPJS ketenagakerjaan, dll Div. Umum) ', 12046700, '2109350561_23-KK-05.016.pdf', 'https://drive.google.com/open?id=1xf8FzFxM3wdWlID7krrJbm4r7z3YHRss', 'nonverifikasi'),
+(211, '23-KK/05/28', 2, 6, 2, '2023-05-22', 'Mei', 'Biaya ATK Diklat (sticker - Div Diklat)', 47700, '1159227371_23-KK.05.028 - Fina Oktafiani.pdf', 'https://drive.google.com/open?id=1x27a3MJeGEELZDGzxhgAAco0GIQia6OT', 'nonverifikasi'),
+(212, '23-KK.05.023', 2, 2, 2, '2023-05-19', 'Mei', 'Peralatan dan Mesin (Akses Point - Div. Umum) ', 1600000, '1025093683_23-KK.05.023.pdf', 'https://drive.google.com/open?id=1RG4K685zWxWpotYhrbb31wUs-c8WZYo_', 'nonverifikasi'),
+(213, '23-KK/05/25', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya Alat Tulis dan Perlengkapan Kantor, Biaya Transportasi Lokal Kantor, Biaya Pemeliharaan & Reparasi Inventaris, Biaya Pemeliharaan & Reparasi Inventaris, Biaya Alat Tulis dan Perlengkapan Kantor, Biaya Alat Tulis dan Perlengkapan Kantor (ID Card, dll', 1822000, '1270090780_23-KK.05.025 - Fina Oktafiani.pdf', 'https://drive.google.com/open?id=1baOPGInnmjL5cavTXWWGQ9SFbZTuVhCK', 'nonverifikasi'),
+(214, '23-KK.05.022', 2, 2, 2, '2023-05-16', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Pemeliharaan Inventaris Kantor (Gula, teh, dll - Div. Umum) ', 387000, '1188976631_23-KK.05.022.pdf', 'https://drive.google.com/open?id=1HovizgJv45il6OmWqXAVjYGa1H83Jz1A', 'nonverifikasi'),
+(215, '23-KK/05/27', 2, 2, 2, '2023-05-22', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Alat Tulis dan Perlengkapan Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga', 2685500, '1062456430_23-KK.05.027 - Fina Oktafiani.pdf', 'https://drive.google.com/open?id=1Miper5fHMZntYQKR4ITCi_o3mq_ncuoQ', 'nonverifikasi'),
+(216, '23-KK-05.018', 2, 6, 2, '2023-05-16', 'Mei', 'Biaya transport lokal diklat, biaya bahan diklat las dalam air, biaya bahan diklat khusus, biaya bahan diklat khusus. (Material diklat LKS div. Diklat) ', 2323000, '1952681054_23-KK-05.018.pdf', 'https://drive.google.com/open?id=1Nn9MzPWnt3UZ9XrueRO2S0DySKhXGubB', 'nonverifikasi'),
+(217, '23-KK/05/26', 2, 6, 2, '2023-05-19', 'Mei', 'Biaya ATK Diklat, Biaya Supplies Diklat, Biaya Supplies Diklat, Biaya Supplies Diklat (Ganti kunci loker, dll - div. diklat)', 402600, '200116520_23-KK.05.026 - Fina Oktafiani.pdf', 'https://drive.google.com/open?id=1TaMK6dEtf0RIuvB7vIS6TWvlt7jkCmzZ', 'nonverifikasi'),
+(218, '23-KK/05.029', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya keperluan rumah tangga kantor, Biaya transportasi lokal kantor, Biaya keperluan rumah tangga kantor (Barang pecah belah, dll div. umum)', 2792100, '1046235809_23-KK-05.029 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1TzvxNLL4c3Bl9I7FLnEOmGBIE4OM1poP', 'nonverifikasi'),
+(219, '23-KK/05.031', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya Makanan dan Minuman Rapat (Konsumsi Rapat - Div.Umum)', 20000, '422575747_23-KK-05.031 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1IRNOIlNzS2p9EcowmBND9eL1CUNUpwlN', 'nonverifikasi'),
+(220, '23-KK/05.030', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya keperluan rumah tangga, Biaya transportasi, lokal kantor (bahan demo SSC div. umum)', 96800, '578605707_23-KK-05.030 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1Ani66I9KAOC4xe-lw3GfvLCqhAoVvFaa', 'nonverifikasi'),
+(221, '23-KK/05.032', 2, 2, 2, '2023-05-24', 'Mei', 'Biaya Makanan & Minuman Rapat dan Biaya Transportasi Lokal Kantor (Konsumsi Tamu Huewei - Div. Umum)', 691700, '1809032901_23-KK-05.032 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1B8MllGvdODyiPvV6mkserPDCgubOfWaT', 'nonverifikasi'),
+(222, '23-KK/05.032', 2, 2, 2, '2023-05-24', 'Mei', 'Biaya Makanan & Minuman Rapat dan Biaya Transportasi Lokal Kantor (Konsumsi Tamu Huewei - Div. Umum)', 691700, '228463842_23-KK-05.032 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1B8MllGvdODyiPvV6mkserPDCgubOfWaT', 'nonverifikasi'),
+(223, '23-KK/05.033', 2, 2, 2, '2023-05-26', 'Mei', 'Biaya transportasi lokal kantor, Biaya pemeliharaan gedung, biaya alat tulis kantor dan perlengkapan kantor (BBM L300 div. umum)', 328500, '1500373513_23-KK-05.033 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1wWW_oE0KpvPZoGStQ8t6ZSV5pf8DVH6H', 'nonverifikasi'),
+(224, '23-KK/05.034', 2, 2, 2, '2023-05-19', 'Mei', 'Biaya Makanan dan Minuman Rapat (Rapat Koor SSC - Div. Umum)', 195000, '2145847183_23-KK-05.034 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1tvc2_CcZw9YZGRg9Nsi1HS2x2SR-VV0g', 'nonverifikasi');
+INSERT INTO `master_pengeluaran` (`Id_pengeluaran`, `Kode_pengeluaran`, `Id_sumberdana`, `Id_divisi`, `Id_jenis`, `Tanggal`, `Bulan`, `Rincian`, `Jumlah`, `Bukti_lpj`, `Drive`, `Keterangan`) VALUES
+(225, '23-KK/05.037', 2, 6, 2, '2023-05-19', 'Mei', 'Biaya makanan dan minuman diklat (makan siang diklat div. diklat)', 1140000, '738055519_23-KK-05.037 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1GaZFlLFE_c87yL2_7EdWjDS-ZYHPSSRy', 'nonverifikasi'),
+(226, '23-KK/05.039', 2, 6, 2, '2023-05-24', 'Mei', 'Biaya lainnya diklat', 3500000, '1818990283_23-KK-05.039 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1vJP9221u9bKoe4hyeIk296upszXoHViG', 'nonverifikasi'),
+(227, '23-KK/05.040', 2, 6, 2, '2023-05-23', 'Mei', 'Biaya bahan diklat mekanik, Biaya bahan diklat las dalam air (Material  diklat div. Diklat)', 2660500, '1252097588_23-KK-05.040 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1tOU3S4MVleJPDujPsfQB8XCAHlsLnOJw', 'nonverifikasi'),
+(228, '23-KK/05.035', 2, 2, 2, '2023-05-22', 'Mei', 'Biaya Perjalanan Dinas (SPPD ke JKT - Div.Umum)', 16576100, '648098824_23-KK-05.035 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1LX0hCUdQ4RX13V_desx-s9twIZT6VKlJ', 'nonverifikasi'),
+(229, '23-KK/05.041', 2, 2, 2, '2023-05-23', 'Mei', 'Biaya transportasi lokal kantor, Biaya keperluan rumah tangga kantor (Pel spon div. umum) ', 595000, '81811117_23-KK-05.041 - Gamelli Alfius.pdf', 'https://drive.google.com/open?id=1tmD1yQ_QmE4fJvAXmZoDLSeH8eVgFu4p', 'nonverifikasi'),
+(230, '23-KK/05.038', 2, 2, 2, '2023-05-24', 'Mei', 'Biaya Promosi/Penjualan (Hosting-Div.Umum)', 4713300, '1684398154_23-KK-05.038 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1xlNY-3JtJwC4zP9vC1Q4X04Od82GpfSJ', 'nonverifikasi'),
+(231, '23-KK/05.033', 2, 2, 2, '2023-05-23', 'Mei', 'Biaya Makanan & Minuman Rapat (Pengeluaran-Div.Umum)', 312500, '661383067_23-KK-05033 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1_fZwEgBN9tm6d7cVmzKOUWbrUBV6Jrre', 'nonverifikasi'),
+(232, '23-KK/05.036', 2, 2, 2, '2023-05-26', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Keperluan Rumah Tangga Kantor, dan Pendapatan Lain-Lain (Instruktur Senam,dll-Div.Umum)', 610000, '768290283_23-KK-05.036 (1) - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=17wdfqk803QXGAFUSpiGoKuS6Km4h1_HX', 'nonverifikasi'),
+(233, '23-KK.05.045', 2, 7, 2, '2023-05-29', 'Mei', 'Biaya ATK Produksi, Biaya Supplies Produksi, Biaya SUpplies Produksi, Biaya ATK Produksi, Biaya Transport Lokal Produksi, Biaya Obat-Obatan Produksi, Biaya Pemakaian Bahan Produksi,  Biaya Pemakaian Bahan Produksi,  Biaya Pemakaian Bahan Produksi, BIaya A', 2403800, '649465012_23-KK-05.045.pdf', 'https://drive.google.com/open?id=1VpEIgWaAhEGU3B_eyOYnDhMxFzGCHhFk', 'nonverifikasi'),
+(234, '23-KK/05.042', 2, 6, 2, '2023-05-29', 'Mei', 'Biaya Makanan & Minuman Diklat, Biaya Perlengkapan Diklat (seragam, dll), Biaya Bahan Diklat Mekanik, Biaya Transport Lokal Diklat (Maksi UW, dll - Div. Diklat) ', 1724000, '468412452_23-KK.05.042.pdf', 'https://drive.google.com/open?id=11EfruHzOF46BrPy0YsudK36jGmFaGP1k', 'nonverifikasi'),
+(235, '23-KK.05.044', 2, 6, 2, '2023-05-29', 'Mei', 'Biaya Bahan Diklat Mekanik (Materi Diklat-Div.Diklat)', 1320000, '57691814_23-KK-05.044 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1N7LZzkX62FtSv1f3vNR-fK9H9lFeM8Tu', 'nonverifikasi'),
+(236, '23-KK.05.043', 2, 6, 2, '2023-05-26', 'Mei', 'Biaya Bahan Diklat Mekanik (Material Diklat-Div.Diklat)', 1320000, '580606622_23-KK-05.043 - Febbi Nur Fadillah.pdf', 'https://drive.google.com/open?id=1SgyU21JQFnP-uNAHIhqbL2npsnpqgLOn', 'nonverifikasi'),
+(237, '23-KK.05.046', 2, 2, 2, '2023-05-29', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Transportasi Lokal Kantor, Biaya Alat Tulis dan Perlengkapan Kantor, Biaya Transportasi Lokal Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Pemeliharaan Gedung, Biaya Alat Tulis Kantor dan Perlengkapan Kanto', 584700, '573553740_23-KK-05.046 - Atika Fina Lestari.pdf', 'https://drive.google.com/open?id=1N_FdKgB6rPcATWUSu6YXefrzN81-PR3i', 'nonverifikasi'),
+(238, '23-KK.05.046', 2, 2, 2, '2023-05-29', 'Mei', 'Biaya Keperluan Rumah Tangga Kantor, Biaya Transportasi Lokal Kantor, Biaya Alat Tulis dan Perlengkapan Kantor, Biaya Transportasi Lokal Kantor, Biaya Keperluan Rumah Tangga Kantor, Biaya Pemeliharaan Gedung, Biaya Alat Tulis Kantor dan Perlengkapan Kanto', 584700, '221571481_23-KK-05.046 - Atika Fina Lestari.pdf', 'https://drive.google.com/open?id=1N_FdKgB6rPcATWUSu6YXefrzN81-PR3i', 'nonverifikasi'),
+(241, '23-KK/05.047', 2, 2, 2, '2023-05-29', 'Mei', 'Biaya Pemeliharaan Gedung (Repair ctv gd STC-Div Umum)', 5550000, '1280305147_23-KK-05.047 - Atika Fina Lestari.pdf', 'https://drive.google.com/open?id=1aaOxK1AzzdhvHba6dZ_xOm4XX1vZv4Yn', 'nonverifikasi');
 
 -- --------------------------------------------------------
 
@@ -1161,12 +1308,13 @@ CREATE TABLE `master_user` (
 INSERT INTO `master_user` (`Id_user`, `Nama`, `Alamat`, `Username`, `Password`, `Level`) VALUES
 (1, 'Administrator', 'solo', 'admin', '416ed25d7fbb442d47418920e8c1a4bb', 'Administrator'),
 (2, 'Wahyu', 'jateng', 'manager', '9e7deed91630d79ca831f2750da82cae', 'Manager'),
-(7, 'Agus', 'Solo', 'KSTagus', 'f91816906019f202a37a23caefa71cce', 'Keuangan'),
-(8, 'Dyka', 'Solo', 'KSTdika', 'b889c087d7308f03a65df0d0bb11f04a', 'Keuangan'),
-(9, 'Ana', 'Solo', 'KSTana', '2b7bfc87ca82612a052faaaa9cd7443b', 'Keuangan'),
+(7, 'Agus', 'Solo', 'KSTagus', 'f91816906019f202a37a23caefa71cce', 'keuangan'),
+(8, 'Dyka', 'Solo', 'KSTdika', 'b889c087d7308f03a65df0d0bb11f04a', 'keuangan'),
+(9, 'Ana', 'Solo', 'KSTana', '2b7bfc87ca82612a052faaaa9cd7443b', 'keuangan'),
 (10, 'Keuangan', 'STP', 'Adkeu', 'f0b2ef61336d77465d1cf2c576087be0', 'Verifikator'),
-(11, 'kesekretariatan', 'Solo', 'kesekretariatan', '2b933cb9666f1e4f1f7a735577e6cc7e', 'Kesekretariatan'),
-(12, 'Barang', 'STP keuangan', 'Barang', '28ac6fc8d61a7c4e45051c063c6038af', 'Barang');
+(11, 'Kesekretariatan', 'Solo', 'kesekretariatan', '2b933cb9666f1e4f1f7a735577e6cc7e', 'Kesekretariatan'),
+(12, 'Pengelolaan Kawasan', 'STP keuangan', 'Barang', '28ac6fc8d61a7c4e45051c063c6038af', 'Barang'),
+(13, 'HRD', 'Solo technopark', 'STPhrd', '01aa0207377173ef426f88701cc8d58a', 'Hrd');
 
 -- --------------------------------------------------------
 
@@ -1222,6 +1370,117 @@ CREATE TABLE `peraturan` (
   `Tahun` int(11) NOT NULL,
   `Drive` varchar(255) NOT NULL,
   `Bukti` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_cuti`
+--
+
+CREATE TABLE `riwayat_cuti` (
+  `Id_riwayatcuti` int(11) NOT NULL,
+  `Id_cuti` int(11) NOT NULL,
+  `tgl_SK` date NOT NULL,
+  `Keperluan` varchar(255) NOT NULL,
+  `mulai_cuti` date NOT NULL,
+  `selesai_cuti` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_hukuman`
+--
+
+CREATE TABLE `riwayat_hukuman` (
+  `Id_hukuman` int(11) NOT NULL,
+  `Pelanggaran` varchar(255) NOT NULL,
+  `Hukuman` varchar(255) NOT NULL,
+  `Tingkat_hukuman` varchar(255) NOT NULL,
+  `Tgl_sk` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_jabatan`
+--
+
+CREATE TABLE `riwayat_jabatan` (
+  `Id_riwayat_jabatan` int(11) NOT NULL,
+  `TMT` varchar(255) NOT NULL,
+  `Jabatan` varchar(255) NOT NULL,
+  `Unit_kerja` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_keluarga`
+--
+
+CREATE TABLE `riwayat_keluarga` (
+  `Id_keluarga` int(11) NOT NULL,
+  `nama_ayah` varchar(255) NOT NULL,
+  `tempatlahir_ayah` varchar(255) NOT NULL,
+  `tgllahir_ayah` date NOT NULL,
+  `nama_ibu` varchar(255) NOT NULL,
+  `tempatlahir_ibu` varchar(255) NOT NULL,
+  `tgllahir_ibu` date NOT NULL,
+  `nama_pasangan` varchar(255) NOT NULL,
+  `tempatlahir_pasangan` varchar(255) NOT NULL,
+  `tgllahir_pasangan` date NOT NULL,
+  `nama_ayahmertua` varchar(255) NOT NULL,
+  `tempatlahir_ayahmertua` varchar(255) NOT NULL,
+  `tgllahir_ayahmertua` date NOT NULL,
+  `nama_ibumertua` varchar(255) NOT NULL,
+  `tempatlahir_ibumertua` varchar(255) NOT NULL,
+  `tgllahir_ibumertua` date NOT NULL,
+  `nama_anak1` varchar(255) NOT NULL,
+  `tempatlahir_anak1` varchar(255) NOT NULL,
+  `tgllahir_anak1` date NOT NULL,
+  `nama_anak2` varchar(255) NOT NULL,
+  `tempatlahir_anak2` varchar(255) NOT NULL,
+  `tgllahir_anak2` date NOT NULL,
+  `nama_anak3` varchar(255) NOT NULL,
+  `tempatlahir_anak3` varchar(255) NOT NULL,
+  `tgllahir_anak3` date NOT NULL,
+  `nama_anak4` varchar(255) NOT NULL,
+  `tempatlahir_anak4` varchar(255) NOT NULL,
+  `tgllahir_anak4` date NOT NULL,
+  `nama_anak5` varchar(255) NOT NULL,
+  `tempatlahir_anak5` varchar(255) NOT NULL,
+  `tgllahir_anak5` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_pelatihan`
+--
+
+CREATE TABLE `riwayat_pelatihan` (
+  `Id_pelatihan` int(11) NOT NULL,
+  `Nama_diklat` varchar(255) NOT NULL,
+  `Tipe_diklat` varchar(255) NOT NULL,
+  `Penyelenggara` varchar(255) NOT NULL,
+  `Tgl_lulus` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_pendidikan`
+--
+
+CREATE TABLE `riwayat_pendidikan` (
+  `Id_pendidikan` int(11) NOT NULL,
+  `Tingkat` varchar(255) DEFAULT NULL,
+  `Jurusan` varchar(255) DEFAULT NULL,
+  `Nama_instansi` varchar(255) DEFAULT NULL,
+  `Gelar` varchar(255) DEFAULT NULL,
+  `Tahun_lulus` year(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -2997,9 +3256,42 @@ INSERT INTO `surat_masuk` (`Id_Suratmasuk`, `No_Suratmasuk`, `Nomor_surat`, `Tan
 (1807, '019.Apr/2023', 'RP.05/1562/2023', '2023-04-10', 'Undangan', 'Pemerintah Kota Surakarta', 'Rapat Koordinasi Pengendalian Operasional Kegiatan (RAKORPOK) Kota Surakarta Triwulan I TA. 2023', '11-Apr-23', 'Saya hadir, Yth. Ka. TU mohon dibantu menyediakan bahannya', 'Undangan', '13-Apr-23', NULL, NULL),
 (1808, '020.Apr/2023', 'B/KWU.6.2/UND.30.=/D.IV.M.EKON.1/04/2023', '2023-04-06', 'Rapat Koordinasi Teknis Festival Ekonomi Keuangan Digital Indonesis (FEKDI) 2023', 'KEMENKO', 'Rapat Koordinasi Teknis Festival Ekonomi Keuangan Digital Indonesis (FEKDI) 2023 pada hari Jum\'at, 14 April 2023 pukul 09.00', '11-Apr-23', NULL, NULL, NULL, NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit_kerja`
+--
+
+CREATE TABLE `unit_kerja` (
+  `Id_unit_kerja` int(11) NOT NULL,
+  `Kode_unit_kerja` int(11) NOT NULL,
+  `Kontak_unit_kerja` varchar(255) NOT NULL,
+  `Nama_unit_kerja` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `unit_kerja`
+--
+
+INSERT INTO `unit_kerja` (`Id_unit_kerja`, `Kode_unit_kerja`, `Kontak_unit_kerja`, `Nama_unit_kerja`) VALUES
+(1, 1, '02372437893', 'Produksi'),
+(2, 2, '02838924729', 'Diklat');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  ADD PRIMARY KEY (`Id_jabatan`);
+
+--
+-- Indexes for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  ADD PRIMARY KEY (`Id_karyawan`);
 
 --
 -- Indexes for table `master_agenda`
@@ -3018,6 +3310,12 @@ ALTER TABLE `master_barang`
 --
 ALTER TABLE `master_belanja`
   ADD PRIMARY KEY (`Id_jenisbelanja`);
+
+--
+-- Indexes for table `master_cuti`
+--
+ALTER TABLE `master_cuti`
+  ADD PRIMARY KEY (`Id_cuti`);
 
 --
 -- Indexes for table `master_divisi`
@@ -3092,6 +3390,42 @@ ALTER TABLE `peraturan`
   ADD PRIMARY KEY (`Id_peraturan`);
 
 --
+-- Indexes for table `riwayat_cuti`
+--
+ALTER TABLE `riwayat_cuti`
+  ADD PRIMARY KEY (`Id_riwayatcuti`);
+
+--
+-- Indexes for table `riwayat_hukuman`
+--
+ALTER TABLE `riwayat_hukuman`
+  ADD PRIMARY KEY (`Id_hukuman`);
+
+--
+-- Indexes for table `riwayat_jabatan`
+--
+ALTER TABLE `riwayat_jabatan`
+  ADD PRIMARY KEY (`Id_riwayat_jabatan`);
+
+--
+-- Indexes for table `riwayat_keluarga`
+--
+ALTER TABLE `riwayat_keluarga`
+  ADD PRIMARY KEY (`Id_keluarga`);
+
+--
+-- Indexes for table `riwayat_pelatihan`
+--
+ALTER TABLE `riwayat_pelatihan`
+  ADD PRIMARY KEY (`Id_pelatihan`);
+
+--
+-- Indexes for table `riwayat_pendidikan`
+--
+ALTER TABLE `riwayat_pendidikan`
+  ADD PRIMARY KEY (`Id_pendidikan`);
+
+--
 -- Indexes for table `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
@@ -3104,8 +3438,26 @@ ALTER TABLE `surat_masuk`
   ADD PRIMARY KEY (`Id_Suratmasuk`);
 
 --
+-- Indexes for table `unit_kerja`
+--
+ALTER TABLE `unit_kerja`
+  ADD PRIMARY KEY (`Id_unit_kerja`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `jabatan`
+--
+ALTER TABLE `jabatan`
+  MODIFY `Id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `karyawan`
+--
+ALTER TABLE `karyawan`
+  MODIFY `Id_karyawan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `master_agenda`
@@ -3124,6 +3476,12 @@ ALTER TABLE `master_barang`
 --
 ALTER TABLE `master_belanja`
   MODIFY `Id_jenisbelanja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `master_cuti`
+--
+ALTER TABLE `master_cuti`
+  MODIFY `Id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `master_divisi`
@@ -3147,7 +3505,7 @@ ALTER TABLE `master_jenis_peraturan`
 -- AUTO_INCREMENT for table `master_keterangan`
 --
 ALTER TABLE `master_keterangan`
-  MODIFY `Id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Id_keterangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `master_pegawai`
@@ -3159,13 +3517,13 @@ ALTER TABLE `master_pegawai`
 -- AUTO_INCREMENT for table `master_penerimaan`
 --
 ALTER TABLE `master_penerimaan`
-  MODIFY `Id_penerimaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=735;
+  MODIFY `Id_penerimaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=769;
 
 --
 -- AUTO_INCREMENT for table `master_pengeluaran`
 --
 ALTER TABLE `master_pengeluaran`
-  MODIFY `Id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `Id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
 
 --
 -- AUTO_INCREMENT for table `master_sumberdana`
@@ -3177,7 +3535,7 @@ ALTER TABLE `master_sumberdana`
 -- AUTO_INCREMENT for table `master_user`
 --
 ALTER TABLE `master_user`
-  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `metode_bayar`
@@ -3192,6 +3550,42 @@ ALTER TABLE `peraturan`
   MODIFY `Id_peraturan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `riwayat_cuti`
+--
+ALTER TABLE `riwayat_cuti`
+  MODIFY `Id_riwayatcuti` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riwayat_hukuman`
+--
+ALTER TABLE `riwayat_hukuman`
+  MODIFY `Id_hukuman` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riwayat_jabatan`
+--
+ALTER TABLE `riwayat_jabatan`
+  MODIFY `Id_riwayat_jabatan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riwayat_keluarga`
+--
+ALTER TABLE `riwayat_keluarga`
+  MODIFY `Id_keluarga` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riwayat_pelatihan`
+--
+ALTER TABLE `riwayat_pelatihan`
+  MODIFY `Id_pelatihan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `riwayat_pendidikan`
+--
+ALTER TABLE `riwayat_pendidikan`
+  MODIFY `Id_pendidikan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `surat_keluar`
 --
 ALTER TABLE `surat_keluar`
@@ -3202,6 +3596,12 @@ ALTER TABLE `surat_keluar`
 --
 ALTER TABLE `surat_masuk`
   MODIFY `Id_Suratmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1809;
+
+--
+-- AUTO_INCREMENT for table `unit_kerja`
+--
+ALTER TABLE `unit_kerja`
+  MODIFY `Id_unit_kerja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
