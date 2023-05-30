@@ -17,18 +17,12 @@ if($cek > 0){
 	$_SESSION['username'] = $data['Username'];
 	$_SESSION['level'] = $data['Level'];
 
-	if($data['Level'] == "Administrator"){
-		$_SESSION['status'] = "administrator_logedin";
-		header("location:admin/");
-	}else if($data['Level'] == "keuangan"){
+	if($data['Level'] == "keuangan"){
 		$_SESSION['status'] = "keuangan_logedin";
 		header("location:keuangan/");
 	}else if($data['Level'] == "Verifikator"){
 		$_SESSION['status'] = "verifikator_logedin";
 		header("location:verifikator/");
-	}else if($data['Level'] == "manager"){
-		$_SESSION['status'] = "manager_logedin";
-		header("location:manager/");
 	}else{
 		header("location:index.php?alert=gagal");
 	}
